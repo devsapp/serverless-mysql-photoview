@@ -28,7 +28,13 @@ Parameters:
   required: # 必填项
     - accessKeyId
     - accessKeySecret
+    - region
   properties:
+    region:
+      type: string
+      title: region
+      description: 默认cn-hangzhou
+      default: "cn-hangzhou"
     accessKeyId:
       type: secret
       title: accessKeyId
