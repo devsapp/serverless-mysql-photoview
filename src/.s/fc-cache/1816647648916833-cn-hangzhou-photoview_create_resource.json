@@ -1,0 +1,8 @@
+{
+  "project": "1816647648916833-cn-hangzhou-logproject",
+  "logstore": "1816647648916833-cn-hangzhou-logproject/fc-service-photoview-logstore",
+  "serviceName": "photoview",
+  "functionNames": [
+    "photoview/photoview_creator"
+  ]
+}

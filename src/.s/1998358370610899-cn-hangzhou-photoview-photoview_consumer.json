@@ -1,0 +1,60 @@
+{
+  "statefulConfig": {
+    "functionId": "09162326-f1f3-43d9-8e51-dd52825cc92f",
+    "functionName": "photoview_consumer",
+    "description": "This is default function description by fc-deploy component",
+    "runtime": "custom-container",
+    "handler": "index.handler",
+    "timeout": 60,
+    "initializer": "",
+    "initializationTimeout": 3,
+    "codeSize": 0,
+    "codeChecksum": "",
+    "memorySize": 3072,
+    "gpuMemorySize": null,
+    "environmentVariables": {
+      "ACCESS_KEY_ID": "LTAI5tKiS64Cob7GUnGSbaru",
+      "ACCESS_KEY_SECRET": "7aaYn1QGZS0bGHVGbsbh6FgkSOeEJi",
+      "DATABASE": "photoview",
+      "ENDPOINT": "rds-data.cn-hangzhou.aliyuncs.com",
+      "PHOTOVIEW_DEVELOPMENT_MODE": "1",
+      "RESOURCE_ARN": "acs:rds:cn-hangzhou:1998358370610899:dbInstance/rm-bp1te65c6a6u0m49x",
+      "SECRET_ARN": "acs:rds:cn-hangzhou:1998358370610899:rds-db-credentials/photoview-V19zOT"
+    },
+    "createdTime": "2022-09-14T03:36:24Z",
+    "lastModifiedTime": "2022-09-14T09:05:04Z",
+    "instanceConcurrency": 1,
+    "instanceSoftConcurrency": null,
+    "customContainerConfig": {
+      "image": "registry.cn-hangzhou.aliyuncs.com/serverless_dataapi/fc:0.1",
+      "command": "[\"/app/photoview\"]",
+      "args": null,
+      "accelerationType": "Default",
+      "imageAcclConfig": null,
+      "accelerationInfo": {
+        "status": "Ready"
+      },
+      "instanceID": null,
+      "instancePrivateDNS": null,
+      "serverlessImage": null
+    },
+    "caPort": 80,
+    "instanceType": "e1",
+    "layers": null,
+    "layersArnV2": null,
+    "instanceLifecycleConfig": {
+      "preFreeze": {
+        "handler": "",
+        "timeout": 3
+      },
+      "preStop": {
+        "handler": "",
+        "timeout": 3
+      }
+    },
+    "customDNS": null,
+    "customRuntimeConfig": null,
+    "customHealthCheckConfig": null,
+    "name": "photoview_consumer"
+  }
+}

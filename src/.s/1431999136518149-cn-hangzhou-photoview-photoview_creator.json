@@ -1,0 +1,52 @@
+{
+  "statefulConfig": {
+    "functionId": "de2a68b5-2f80-4160-8d30-5d33dd7e5bb3",
+    "functionName": "photoview_creator",
+    "description": "create mysql resource",
+    "runtime": "custom-container",
+    "handler": "index.handler",
+    "timeout": 1800,
+    "initializer": "",
+    "initializationTimeout": 3,
+    "codeSize": 0,
+    "codeChecksum": "",
+    "memorySize": 1024,
+    "gpuMemorySize": null,
+    "environmentVariables": {},
+    "createdTime": "2022-09-08T08:09:35Z",
+    "lastModifiedTime": "2022-09-13T06:07:31Z",
+    "instanceConcurrency": 1,
+    "instanceSoftConcurrency": null,
+    "customContainerConfig": {
+      "image": "registry.cn-hangzhou.aliyuncs.com/serverless_devs/serverless-rds-creator-image:0.0.1",
+      "command": null,
+      "args": null,
+      "accelerationType": "Default",
+      "imageAcclConfig": null,
+      "accelerationInfo": {
+        "status": "Ready"
+      },
+      "instanceID": null,
+      "instancePrivateDNS": null,
+      "serverlessImage": null
+    },
+    "caPort": 9000,
+    "instanceType": "e1",
+    "layers": null,
+    "layersArnV2": null,
+    "instanceLifecycleConfig": {
+      "preFreeze": {
+        "handler": "",
+        "timeout": 3
+      },
+      "preStop": {
+        "handler": "",
+        "timeout": 3
+      }
+    },
+    "customDNS": null,
+    "customRuntimeConfig": null,
+    "customHealthCheckConfig": null,
+    "name": "photoview_creator"
+  }
+}
