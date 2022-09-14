@@ -1,0 +1,27 @@
+{
+  "statefulConfig": {
+    "triggerName": "httpTrigger",
+    "description": "",
+    "triggerId": "9c8e0537-b636-4a7a-8338-d71876ff9a0b",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": null,
+    "urlInternet": "https://photoviconsumer-photoview-outervtsty.cn-hangzhou.fcapp.run",
+    "urlIntranet": "https://photoviconsumer-photoview-outervtsty.cn-hangzhou-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "authType": "anonymous"
+    },
+    "createdTime": "2022-09-14T03:36:25Z",
+    "lastModifiedTime": "2022-09-14T09:05:04Z",
+    "name": "httpTrigger"
+  }
+}

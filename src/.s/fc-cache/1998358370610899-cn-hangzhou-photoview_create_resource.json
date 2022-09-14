@@ -1,0 +1,15 @@
+{
+  "policies": [
+    "AliyunFCDefaultRolePolicy"
+  ],
+  "project": "1998358370610899-cn-hangzhou-logproject",
+  "logstore": "1998358370610899-cn-hangzhou-logproject/fc-service-photoview-logstore",
+  "serviceName": "photoview",
+  "functionNames": [
+    "photoview/photoview_creator",
+    "photoview/photoview_consumer"
+  ],
+  "domains": [
+    "photoview-consumer.photoview.1998358370610899.cn-hangzhou.fc.devsapp.net"
+  ]
+}

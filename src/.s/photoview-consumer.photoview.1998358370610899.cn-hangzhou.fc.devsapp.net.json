@@ -1,0 +1,36 @@
+{
+  "domainName": "photoview-consumer.photoview.1998358370610899.cn-hangzhou.fc.devsapp.net",
+  "accountId": "1998358370610899",
+  "protocol": "HTTP",
+  "certConfig": {
+    "certName": null,
+    "privateKey": null,
+    "certificate": null
+  },
+  "tlsConfig": {
+    "minVersion": null,
+    "maxVersion": null,
+    "cipherSuites": null
+  },
+  "apiVersion": "2016-08-15",
+  "routeConfig": {
+    "routes": [
+      {
+        "path": "/*",
+        "accountId": null,
+        "serviceName": "photoview",
+        "functionName": "photoview_consumer",
+        "qualifier": null,
+        "methods": [
+          "GET",
+          "POST",
+          "DELETE",
+          "PUT",
+          "OPTIONS"
+        ]
+      }
+    ]
+  },
+  "createdTime": "2022-09-14T03:36:37Z",
+  "lastModifiedTime": "2022-09-14T09:05:08Z"
+}
