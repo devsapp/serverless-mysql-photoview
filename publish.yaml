@@ -29,12 +29,31 @@ Parameters:
     - accessKeyId
     - accessKeySecret
     - region
+    - roleArn
   properties:
     region:
       type: string
       title: region
       description: 默认cn-hangzhou
       default: "cn-hangzhou"
+    roleArn:
+      title: RAM角色ARN
+      type: string
+      default: ''
+      pattern: '^acs:ram::[0-9]*:role/.*$'
+      description: 应用所属的函数计算服务配置的 role, 请提前创建好对应的 role, 授信函数计算服务, 并配置好 AliyunOSSFullAccess, AliyunFCDefaultRolePolicy, AliyunRDSFullAccess policy, AliyunECSFullAccess, AliyunLogFullAccess 和 AliyunVPCFullAccess。
+      required: true
+      x-role:
+        name: fcunzipossrole
+        service: fc
+        authorities:
+          - AliyunOSSFullAccess
+          - AliyunFCDefaultRolePolicy
+          - AliyunRDSFullAccess
+          - AliyunContainerRegistryFullAccess
+          - AliyunECSFullAccess
+          - AliyunLogFullAccess
+          - AliyunVPCFullAccess
     accessKeyId:
       type: secret
       title: accessKeyId

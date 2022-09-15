@@ -7,7 +7,7 @@ vars: # 全局变量
   service:
     name: "photoview"
     internetAccess: true
-#    role: "{{ roleArn }}"
+    role: "{{ roleArn }}"
     description: "创建MySQL并使用"
     logConfig: auto
 
