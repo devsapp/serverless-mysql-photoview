@@ -3,14 +3,16 @@ package terraform
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+
 	"github.com/gin-gonic/gin"
 	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/zclconf/go-cty/cty"
-	"io"
-	"os"
-	"path/filepath"
+
 	"serverless-terraform-mysql-creator/code/static"
 
 	"strings"
@@ -65,7 +67,7 @@ func (t *Client) GetOSSAndSecret(c *gin.Context, ossConfig *OssConfig) {
 
 	// @todo change to internal network
 	t.OssEndpoint = fmt.Sprintf("oss-%s-internal.aliyuncs.com", t.OssRegion)
-	//t.OssEndpoint = fmt.Sprintf("oss-%s.aliyuncs.com", t.OssRegion)
+	// t.OssEndpoint = fmt.Sprintf("oss-%s.aliyuncs.com", t.OssRegion)
 
 }
 
@@ -82,18 +84,18 @@ func (t *Client) Validate() string {
 		t.logger.Error(errors.New("Can't get SecurityToken"))
 		return "Can't get SecurityToken"
 	}
-	//if t.OssRegion == "" {
+	// if t.OssRegion == "" {
 	//	t.logger.Error(errors.New("Can't get oss region"))
 	//	return "Can't get oss region"
-	//}
-	//if t.OssObjectName == "" {
+	// }
+	// if t.OssObjectName == "" {
 	//	t.logger.Error(errors.New("Can't get oss object name"))
 	//	return "Can't get oss object name"
-	//}
-	//if t.OssBucket == "" {
+	// }
+	// if t.OssBucket == "" {
 	//	t.logger.Error(errors.New("Can't get oss bucket"))
 	//	return "Can't get oss bucket"
-	//}
+	// }
 	return ""
 }
 
@@ -102,7 +104,7 @@ func (t *Client) apply() (error, string) {
 
 	secrets := make([]string, 0)
 	secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey), fmt.Sprintf("ALICLOUD_SECURITY_TOKEN=%s", t.SecurityToken))
-	//secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
+	// secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
 
 	output, err := Execute("terraform", vars, t.logger, t.stop, &secrets)
 	if err != nil {
@@ -130,7 +132,7 @@ func (t *Client) destroy() (error, string) {
 
 	secrets := make([]string, 0)
 	secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey), fmt.Sprintf("ALICLOUD_SECURITY_TOKEN=%s", t.SecurityToken))
-	//secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
+	// secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
 
 	output, err := Execute("terraform", vars, t.logger, t.stop, &secrets)
 	if err != nil {
@@ -156,7 +158,7 @@ func (t *Client) init() error {
 
 	secrets := make([]string, 0)
 	secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey), fmt.Sprintf("ALICLOUD_SECURITY_TOKEN=%s", t.SecurityToken))
-	//secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
+	// secrets = append(secrets, fmt.Sprintf("ALICLOUD_ACCESS_KEY=%s", t.AccessKey), fmt.Sprintf("ALICLOUD_SECRET_KEY=%s", t.SecretKey))
 
 	output, err := Execute("terraform", vars, t.logger, t.stop, &secrets)
 	if err != nil {
@@ -296,7 +298,7 @@ func (t *Client) createBackend() []byte {
 	ossBlock := barBody.AppendNewBlock("backend", []string{"oss"})
 	ossBody := ossBlock.Body()
 	ossBody.SetAttributeValue("bucket", cty.StringVal(t.OssBucket))
-	ossBody.SetAttributeValue("prefix", cty.StringVal("Serverless-Terraform"))
+	ossBody.SetAttributeValue("prefix", cty.StringVal("PhotoView"))
 	ossBody.SetAttributeValue("key", cty.StringVal(t.OssObjectName))
 	ossBody.SetAttributeValue("region", cty.StringVal(t.OssRegion))
 	ossBody.SetAttributeValue("endpoint", cty.StringVal(t.OssEndpoint))
