@@ -25,7 +25,7 @@
 
 | 服务/业务 | 函数计算 |     
 | --- |  --- |   
-| 权限/策略 | AliyunFCFullAccess |     
+| 权限/策略 | AliyunFCFullAccess</br>AliyunOSSFullAccess</br>AliyunRDSFullAccess</br>AliyunContainerRegistryFullAccess</br>AliyunLogFullAccess</br>AliyunVPCFullAccess</br>AliyunECSFullAccess |     
 
 
 </table>
@@ -111,6 +111,19 @@
     2. 利用 pre-action 能力在部署 PhotoView 函数前调用资源创建函数，创建出资源，并将资源配置传入到 PhotoView 函数的环境变量里。
 - PhotoView 函数消费 Serverless MySQL 资源
   1. PhotoView 函数通过从环境变量中获取 Serverless MySQL 的资源配置，之后通过访问 Serverless MySQL 数据库从而完成业务需求。
+
+# MySQL Serverless
+
+## 极致弹性助力降本增效
+
+
+* 本地秒级弹性，快速感知负载变化，3-5秒快速弹性分配资源至合理范围
+* 存储自动扩容，每五分钟对磁盘进行巡检，按需自动增扩云盘容量
+* 实例自动启停，客户中断数据库访问时，实例进入静默状态，节省资源
+* 秒级计费，系统根据实例秒级RCU资源量变化，精确计费
+
+如需了解更多，请参考RDS官方网站  [Serverless Devs Cli] (https://www.serverless-devs.com/serverless-devs/install)https://help.aliyun.com/document_detail/411628.html
+
 
 
 

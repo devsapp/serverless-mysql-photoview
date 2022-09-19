@@ -53,9 +53,9 @@ func FindAlbumsForUser(user *models.User, album_cache *scanner_cache.AlbumScanne
 	}
 
 	dataApi, _ := DataApi.NewDataApiClient()
-	sql_serverless_test := "select benchmark(39970009 ,crc32('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'))"
-	dataApi.Query(sql_serverless_test)
-	dataApi.Query(sql_serverless_test)
+	//sql_serverless_test := "select benchmark(39970009 ,crc32('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'))"
+	//dataApi.Query(sql_serverless_test)
+	//dataApi.Query(sql_serverless_test)
 	userAlbumIDs := make([]int, len(user.Albums))
 	for i, album := range user.Albums {
 		userAlbumIDs[i] = album.ID

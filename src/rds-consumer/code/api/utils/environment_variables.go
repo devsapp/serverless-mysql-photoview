@@ -27,11 +27,14 @@ const (
 
 // dataapi related
 const (
-	AccessKeyId     EnvironmentVariable = "ACCESS_KEY_ID"
-	AccessKeySecret EnvironmentVariable = "ACCESS_KEY_SECRET"
+	AccessKeyId     EnvironmentVariable = "ALIBABA_CLOUD_ACCESS_KEY_ID"
+	AccessKeySecret EnvironmentVariable = "ALIBABA_CLOUD_ACCESS_KEY_SECRET"
+	SecurityToken   EnvironmentVariable = "ALIBABA_CLOUD_SECURITY_TOKEN"
 	Endpoint        EnvironmentVariable = "ENDPOINT"
 	Database        EnvironmentVariable = "DATABASE"
 	ResourceArn     EnvironmentVariable = "RESOURCE_ARN"
+	UID             EnvironmentVariable = "UID"
+	InstanceID      EnvironmentVariable = "Instance_ID"
 	SecretArn       EnvironmentVariable = "SECRET_ARN"
 )
 

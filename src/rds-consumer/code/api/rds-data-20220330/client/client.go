@@ -10,16 +10,318 @@ import (
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
-	"io"
 )
 
+type BatchExecuteStatementResult struct {
+	GeneratedFieldsList [][]*Field `json:"GeneratedFieldsList,omitempty" xml:"GeneratedFieldsList,omitempty" type:"Repeated"`
+}
+
+func (s BatchExecuteStatementResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchExecuteStatementResult) GoString() string {
+	return s.String()
+}
+
+func (s *BatchExecuteStatementResult) SetGeneratedFieldsList(v [][]*Field) *BatchExecuteStatementResult {
+	s.GeneratedFieldsList = v
+	return s
+}
+
+type BeginTransactionResult struct {
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s BeginTransactionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeginTransactionResult) GoString() string {
+	return s.String()
+}
+
+func (s *BeginTransactionResult) SetTransactionId(v string) *BeginTransactionResult {
+	s.TransactionId = &v
+	return s
+}
+
+type ColumnMetadata struct {
+	ArrayBaseColumnType *int32  `json:"ArrayBaseColumnType,omitempty" xml:"ArrayBaseColumnType,omitempty"`
+	IsAutoIncrement     *bool   `json:"IsAutoIncrement,omitempty" xml:"IsAutoIncrement,omitempty"`
+	IsCaseSensitive     *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	IsCurrency          *bool   `json:"IsCurrency,omitempty" xml:"IsCurrency,omitempty"`
+	IsSigned            *bool   `json:"IsSigned,omitempty" xml:"IsSigned,omitempty"`
+	Label               *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Nullable            *int32  `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Precision           *int32  `json:"Precision,omitempty" xml:"Precision,omitempty"`
+	Scale               *int32  `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	TypeName            *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s ColumnMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ColumnMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ColumnMetadata) SetArrayBaseColumnType(v int32) *ColumnMetadata {
+	s.ArrayBaseColumnType = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetIsAutoIncrement(v bool) *ColumnMetadata {
+	s.IsAutoIncrement = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetIsCaseSensitive(v bool) *ColumnMetadata {
+	s.IsCaseSensitive = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetIsCurrency(v bool) *ColumnMetadata {
+	s.IsCurrency = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetIsSigned(v bool) *ColumnMetadata {
+	s.IsSigned = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetLabel(v string) *ColumnMetadata {
+	s.Label = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetName(v string) *ColumnMetadata {
+	s.Name = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetNullable(v int32) *ColumnMetadata {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetPrecision(v int32) *ColumnMetadata {
+	s.Precision = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetScale(v int32) *ColumnMetadata {
+	s.Scale = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetSchemaName(v string) *ColumnMetadata {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetTableName(v string) *ColumnMetadata {
+	s.TableName = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetType(v int32) *ColumnMetadata {
+	s.Type = &v
+	return s
+}
+
+func (s *ColumnMetadata) SetTypeName(v string) *ColumnMetadata {
+	s.TypeName = &v
+	return s
+}
+
+type CommitTransactionResult struct {
+	TransactionStatus *string `json:"TransactionStatus,omitempty" xml:"TransactionStatus,omitempty"`
+}
+
+func (s CommitTransactionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitTransactionResult) GoString() string {
+	return s.String()
+}
+
+func (s *CommitTransactionResult) SetTransactionStatus(v string) *CommitTransactionResult {
+	s.TransactionStatus = &v
+	return s
+}
+
+type ExecuteStatementResult struct {
+	ColumnMetadata         []*ColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Repeated"`
+	FormattedRecords       *string           `json:"FormattedRecords,omitempty" xml:"FormattedRecords,omitempty"`
+	GeneratedFields        []*Field          `json:"GeneratedFields,omitempty" xml:"GeneratedFields,omitempty" type:"Repeated"`
+	NumberOfRecordsUpdated *int64            `json:"NumberOfRecordsUpdated,omitempty" xml:"NumberOfRecordsUpdated,omitempty"`
+	Records                [][]*Field        `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteStatementResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResult) SetColumnMetadata(v []*ColumnMetadata) *ExecuteStatementResult {
+	s.ColumnMetadata = v
+	return s
+}
+
+func (s *ExecuteStatementResult) SetFormattedRecords(v string) *ExecuteStatementResult {
+	s.FormattedRecords = &v
+	return s
+}
+
+func (s *ExecuteStatementResult) SetGeneratedFields(v []*Field) *ExecuteStatementResult {
+	s.GeneratedFields = v
+	return s
+}
+
+func (s *ExecuteStatementResult) SetNumberOfRecordsUpdated(v int64) *ExecuteStatementResult {
+	s.NumberOfRecordsUpdated = &v
+	return s
+}
+
+func (s *ExecuteStatementResult) SetRecords(v [][]*Field) *ExecuteStatementResult {
+	s.Records = v
+	return s
+}
+
+type Field struct {
+	ArrayValue   *string `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty"`
+	BlobValue    *string `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
+	BooleanValue *bool   `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
+	IsNull       *bool   `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
+	LongValue    *int64  `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
+	StringValue  *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+}
+
+func (s Field) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Field) GoString() string {
+	return s.String()
+}
+
+func (s *Field) SetArrayValue(v string) *Field {
+	s.ArrayValue = &v
+	return s
+}
+
+func (s *Field) SetBlobValue(v string) *Field {
+	s.BlobValue = &v
+	return s
+}
+
+func (s *Field) SetBooleanValue(v bool) *Field {
+	s.BooleanValue = &v
+	return s
+}
+
+func (s *Field) SetIsNull(v bool) *Field {
+	s.IsNull = &v
+	return s
+}
+
+func (s *Field) SetLongValue(v int64) *Field {
+	s.LongValue = &v
+	return s
+}
+
+func (s *Field) SetStringValue(v string) *Field {
+	s.StringValue = &v
+	return s
+}
+
+type ResultSetOptions struct {
+	DecimalReturnType *string `json:"DecimalReturnType,omitempty" xml:"DecimalReturnType,omitempty"`
+	LongReturnType    *string `json:"LongReturnType,omitempty" xml:"LongReturnType,omitempty"`
+}
+
+func (s ResultSetOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultSetOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ResultSetOptions) SetDecimalReturnType(v string) *ResultSetOptions {
+	s.DecimalReturnType = &v
+	return s
+}
+
+func (s *ResultSetOptions) SetLongReturnType(v string) *ResultSetOptions {
+	s.LongReturnType = &v
+	return s
+}
+
+type RollbackTransactionResult struct {
+	TransactionStatus *string `json:"TransactionStatus,omitempty" xml:"TransactionStatus,omitempty"`
+}
+
+func (s RollbackTransactionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackTransactionResult) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackTransactionResult) SetTransactionStatus(v string) *RollbackTransactionResult {
+	s.TransactionStatus = &v
+	return s
+}
+
+type SqlParameter struct {
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TypeHint *string `json:"TypeHint,omitempty" xml:"TypeHint,omitempty"`
+	Value    *Field  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SqlParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SqlParameter) GoString() string {
+	return s.String()
+}
+
+func (s *SqlParameter) SetName(v string) *SqlParameter {
+	s.Name = &v
+	return s
+}
+
+func (s *SqlParameter) SetTypeHint(v string) *SqlParameter {
+	s.TypeHint = &v
+	return s
+}
+
+func (s *SqlParameter) SetValue(v *Field) *SqlParameter {
+	s.Value = v
+	return s
+}
+
 type BatchExecuteStatementRequest struct {
-	Database      *string                                        `json:"Database,omitempty" xml:"Database,omitempty"`
-	ParameterSets [][]*BatchExecuteStatementRequestParameterSets `json:"ParameterSets,omitempty" xml:"ParameterSets,omitempty" type:"Repeated"`
-	ResourceArn   *string                                        `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
-	SecretArn     *string                                        `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	Sql           *string                                        `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	TransactionId *string                                        `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	Database      *string           `json:"Database,omitempty" xml:"Database,omitempty"`
+	ParameterSets [][]*SqlParameter `json:"ParameterSets,omitempty" xml:"ParameterSets,omitempty" type:"Repeated"`
+	ResourceArn   *string           `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	SecretArn     *string           `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	Sql           *string           `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	TransactionId *string           `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 }
 
 func (s BatchExecuteStatementRequest) String() string {
@@ -35,7 +337,7 @@ func (s *BatchExecuteStatementRequest) SetDatabase(v string) *BatchExecuteStatem
 	return s
 }
 
-func (s *BatchExecuteStatementRequest) SetParameterSets(v [][]*BatchExecuteStatementRequestParameterSets) *BatchExecuteStatementRequest {
+func (s *BatchExecuteStatementRequest) SetParameterSets(v [][]*SqlParameter) *BatchExecuteStatementRequest {
 	s.ParameterSets = v
 	return s
 }
@@ -57,88 +359,6 @@ func (s *BatchExecuteStatementRequest) SetSql(v string) *BatchExecuteStatementRe
 
 func (s *BatchExecuteStatementRequest) SetTransactionId(v string) *BatchExecuteStatementRequest {
 	s.TransactionId = &v
-	return s
-}
-
-type BatchExecuteStatementRequestParameterSets struct {
-	Name     *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	TypeHint *string                                         `json:"TypeHint,omitempty" xml:"TypeHint,omitempty"`
-	Value    *BatchExecuteStatementRequestParameterSetsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-}
-
-func (s BatchExecuteStatementRequestParameterSets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchExecuteStatementRequestParameterSets) GoString() string {
-	return s.String()
-}
-
-func (s *BatchExecuteStatementRequestParameterSets) SetName(v string) *BatchExecuteStatementRequestParameterSets {
-	s.Name = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSets) SetTypeHint(v string) *BatchExecuteStatementRequestParameterSets {
-	s.TypeHint = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSets) SetValue(v *BatchExecuteStatementRequestParameterSetsValue) *BatchExecuteStatementRequestParameterSets {
-	s.Value = v
-	return s
-}
-
-type BatchExecuteStatementRequestParameterSetsValue struct {
-	ArrayValue   *string   `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty"`
-	BlobValue    io.Reader `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool     `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64  `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool     `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64    `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string   `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-}
-
-func (s BatchExecuteStatementRequestParameterSetsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchExecuteStatementRequestParameterSetsValue) GoString() string {
-	return s.String()
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetArrayValue(v string) *BatchExecuteStatementRequestParameterSetsValue {
-	s.ArrayValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetBlobValue(v io.Reader) *BatchExecuteStatementRequestParameterSetsValue {
-	s.BlobValue = v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetBooleanValue(v bool) *BatchExecuteStatementRequestParameterSetsValue {
-	s.BooleanValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetDoubleValue(v float64) *BatchExecuteStatementRequestParameterSetsValue {
-	s.DoubleValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetIsNull(v bool) *BatchExecuteStatementRequestParameterSetsValue {
-	s.IsNull = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetLongValue(v int64) *BatchExecuteStatementRequestParameterSetsValue {
-	s.LongValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementRequestParameterSetsValue) SetStringValue(v string) *BatchExecuteStatementRequestParameterSetsValue {
-	s.StringValue = &v
 	return s
 }
 
@@ -190,11 +410,11 @@ func (s *BatchExecuteStatementShrinkRequest) SetTransactionId(v string) *BatchEx
 }
 
 type BatchExecuteStatementResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BatchExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BatchExecuteStatementResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchExecuteStatementResponseBody) String() string {
@@ -210,7 +430,7 @@ func (s *BatchExecuteStatementResponseBody) SetCode(v string) *BatchExecuteState
 	return s
 }
 
-func (s *BatchExecuteStatementResponseBody) SetData(v *BatchExecuteStatementResponseBodyData) *BatchExecuteStatementResponseBody {
+func (s *BatchExecuteStatementResponseBody) SetData(v *BatchExecuteStatementResult) *BatchExecuteStatementResponseBody {
 	s.Data = v
 	return s
 }
@@ -227,93 +447,6 @@ func (s *BatchExecuteStatementResponseBody) SetRequestId(v string) *BatchExecute
 
 func (s *BatchExecuteStatementResponseBody) SetSuccess(v bool) *BatchExecuteStatementResponseBody {
 	s.Success = &v
-	return s
-}
-
-type BatchExecuteStatementResponseBodyData struct {
-	UpdateResults []*BatchExecuteStatementResponseBodyDataUpdateResults `json:"UpdateResults,omitempty" xml:"UpdateResults,omitempty" type:"Repeated"`
-}
-
-func (s BatchExecuteStatementResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchExecuteStatementResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BatchExecuteStatementResponseBodyData) SetUpdateResults(v []*BatchExecuteStatementResponseBodyDataUpdateResults) *BatchExecuteStatementResponseBodyData {
-	s.UpdateResults = v
-	return s
-}
-
-type BatchExecuteStatementResponseBodyDataUpdateResults struct {
-	GeneratedFields []*BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields `json:"GeneratedFields,omitempty" xml:"GeneratedFields,omitempty" type:"Repeated"`
-}
-
-func (s BatchExecuteStatementResponseBodyDataUpdateResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchExecuteStatementResponseBodyDataUpdateResults) GoString() string {
-	return s.String()
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResults) SetGeneratedFields(v []*BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) *BatchExecuteStatementResponseBodyDataUpdateResults {
-	s.GeneratedFields = v
-	return s
-}
-
-type BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields struct {
-	ArrayValue   *string   `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty"`
-	BlobValue    io.Reader `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool     `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64  `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool     `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64    `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string   `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-}
-
-func (s BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) GoString() string {
-	return s.String()
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetArrayValue(v string) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.ArrayValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetBlobValue(v io.Reader) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.BlobValue = v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetBooleanValue(v bool) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.BooleanValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetDoubleValue(v float64) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.DoubleValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetIsNull(v bool) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.IsNull = &v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetLongValue(v int64) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.LongValue = &v
-	return s
-}
-
-func (s *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields) SetStringValue(v string) *BatchExecuteStatementResponseBodyDataUpdateResultsGeneratedFields {
-	s.StringValue = &v
 	return s
 }
 
@@ -376,11 +509,11 @@ func (s *BeginTransactionRequest) SetSecretArn(v string) *BeginTransactionReques
 }
 
 type BeginTransactionResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BeginTransactionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BeginTransactionResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BeginTransactionResponseBody) String() string {
@@ -396,7 +529,7 @@ func (s *BeginTransactionResponseBody) SetCode(v string) *BeginTransactionRespon
 	return s
 }
 
-func (s *BeginTransactionResponseBody) SetData(v *BeginTransactionResponseBodyData) *BeginTransactionResponseBody {
+func (s *BeginTransactionResponseBody) SetData(v *BeginTransactionResult) *BeginTransactionResponseBody {
 	s.Data = v
 	return s
 }
@@ -413,23 +546,6 @@ func (s *BeginTransactionResponseBody) SetRequestId(v string) *BeginTransactionR
 
 func (s *BeginTransactionResponseBody) SetSuccess(v bool) *BeginTransactionResponseBody {
 	s.Success = &v
-	return s
-}
-
-type BeginTransactionResponseBodyData struct {
-	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
-}
-
-func (s BeginTransactionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeginTransactionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BeginTransactionResponseBodyData) SetTransactionId(v string) *BeginTransactionResponseBodyData {
-	s.TransactionId = &v
 	return s
 }
 
@@ -492,11 +608,11 @@ func (s *CommitTransactionRequest) SetTransactionId(v string) *CommitTransaction
 }
 
 type CommitTransactionResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CommitTransactionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CommitTransactionResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CommitTransactionResponseBody) String() string {
@@ -512,7 +628,7 @@ func (s *CommitTransactionResponseBody) SetCode(v string) *CommitTransactionResp
 	return s
 }
 
-func (s *CommitTransactionResponseBody) SetData(v *CommitTransactionResponseBodyData) *CommitTransactionResponseBody {
+func (s *CommitTransactionResponseBody) SetData(v *CommitTransactionResult) *CommitTransactionResponseBody {
 	s.Data = v
 	return s
 }
@@ -529,23 +645,6 @@ func (s *CommitTransactionResponseBody) SetRequestId(v string) *CommitTransactio
 
 func (s *CommitTransactionResponseBody) SetSuccess(v bool) *CommitTransactionResponseBody {
 	s.Success = &v
-	return s
-}
-
-type CommitTransactionResponseBodyData struct {
-	TransactionStatus *string `json:"TransactionStatus,omitempty" xml:"TransactionStatus,omitempty"`
-}
-
-func (s CommitTransactionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CommitTransactionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CommitTransactionResponseBodyData) SetTransactionStatus(v string) *CommitTransactionResponseBodyData {
-	s.TransactionStatus = &v
 	return s
 }
 
@@ -583,7 +682,7 @@ type ExecuteStatementRequest struct {
 	Database              *string                                  `json:"Database,omitempty" xml:"Database,omitempty"`
 	FormatRecordsAs       *string                                  `json:"FormatRecordsAs,omitempty" xml:"FormatRecordsAs,omitempty"`
 	IncludeResultMetadata *bool                                    `json:"IncludeResultMetadata,omitempty" xml:"IncludeResultMetadata,omitempty"`
-	Parameters            []*ExecuteStatementRequestParameters     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Parameters            []*SqlParameter                          `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	ResourceArn           *string                                  `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
 	ResultSetOptions      *ExecuteStatementRequestResultSetOptions `json:"ResultSetOptions,omitempty" xml:"ResultSetOptions,omitempty" type:"Struct"`
 	SecretArn             *string                                  `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
@@ -619,7 +718,7 @@ func (s *ExecuteStatementRequest) SetIncludeResultMetadata(v bool) *ExecuteState
 	return s
 }
 
-func (s *ExecuteStatementRequest) SetParameters(v []*ExecuteStatementRequestParameters) *ExecuteStatementRequest {
+func (s *ExecuteStatementRequest) SetParameters(v []*SqlParameter) *ExecuteStatementRequest {
 	s.Parameters = v
 	return s
 }
@@ -646,88 +745,6 @@ func (s *ExecuteStatementRequest) SetSql(v string) *ExecuteStatementRequest {
 
 func (s *ExecuteStatementRequest) SetTransactionId(v string) *ExecuteStatementRequest {
 	s.TransactionId = &v
-	return s
-}
-
-type ExecuteStatementRequestParameters struct {
-	Name     *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	TypeHint *string                                 `json:"TypeHint,omitempty" xml:"TypeHint,omitempty"`
-	Value    *ExecuteStatementRequestParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-}
-
-func (s ExecuteStatementRequestParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementRequestParameters) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementRequestParameters) SetName(v string) *ExecuteStatementRequestParameters {
-	s.Name = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParameters) SetTypeHint(v string) *ExecuteStatementRequestParameters {
-	s.TypeHint = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParameters) SetValue(v *ExecuteStatementRequestParametersValue) *ExecuteStatementRequestParameters {
-	s.Value = v
-	return s
-}
-
-type ExecuteStatementRequestParametersValue struct {
-	ArrayValue   *string   `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty"`
-	BlobValue    io.Reader `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool     `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64  `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool     `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64    `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string   `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-}
-
-func (s ExecuteStatementRequestParametersValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementRequestParametersValue) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetArrayValue(v string) *ExecuteStatementRequestParametersValue {
-	s.ArrayValue = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetBlobValue(v io.Reader) *ExecuteStatementRequestParametersValue {
-	s.BlobValue = v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetBooleanValue(v bool) *ExecuteStatementRequestParametersValue {
-	s.BooleanValue = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetDoubleValue(v float64) *ExecuteStatementRequestParametersValue {
-	s.DoubleValue = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetIsNull(v bool) *ExecuteStatementRequestParametersValue {
-	s.IsNull = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetLongValue(v int64) *ExecuteStatementRequestParametersValue {
-	s.LongValue = &v
-	return s
-}
-
-func (s *ExecuteStatementRequestParametersValue) SetStringValue(v string) *ExecuteStatementRequestParametersValue {
-	s.StringValue = &v
 	return s
 }
 
@@ -826,11 +843,11 @@ func (s *ExecuteStatementShrinkRequest) SetTransactionId(v string) *ExecuteState
 }
 
 type ExecuteStatementResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ExecuteStatementResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteStatementResponseBody) String() string {
@@ -846,7 +863,7 @@ func (s *ExecuteStatementResponseBody) SetCode(v string) *ExecuteStatementRespon
 	return s
 }
 
-func (s *ExecuteStatementResponseBody) SetData(v *ExecuteStatementResponseBodyData) *ExecuteStatementResponseBody {
+func (s *ExecuteStatementResponseBody) SetData(v *ExecuteStatementResult) *ExecuteStatementResponseBody {
 	s.Data = v
 	return s
 }
@@ -863,289 +880,6 @@ func (s *ExecuteStatementResponseBody) SetRequestId(v string) *ExecuteStatementR
 
 func (s *ExecuteStatementResponseBody) SetSuccess(v bool) *ExecuteStatementResponseBody {
 	s.Success = &v
-	return s
-}
-
-type ExecuteStatementResponseBodyData struct {
-	ColumnMetadata         []*ExecuteStatementResponseBodyDataColumnMetadata  `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Repeated"`
-	FormattedRecords       *string                                            `json:"FormattedRecords,omitempty" xml:"FormattedRecords,omitempty"`
-	GeneratedFields        []*ExecuteStatementResponseBodyDataGeneratedFields `json:"GeneratedFields,omitempty" xml:"GeneratedFields,omitempty" type:"Repeated"`
-	NumberOfRecordsUpdated *int64                                             `json:"NumberOfRecordsUpdated,omitempty" xml:"NumberOfRecordsUpdated,omitempty"`
-	Records                [][]*ExecuteStatementResponseBodyDataRecords       `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-}
-
-func (s ExecuteStatementResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementResponseBodyData) SetColumnMetadata(v []*ExecuteStatementResponseBodyDataColumnMetadata) *ExecuteStatementResponseBodyData {
-	s.ColumnMetadata = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyData) SetFormattedRecords(v string) *ExecuteStatementResponseBodyData {
-	s.FormattedRecords = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyData) SetGeneratedFields(v []*ExecuteStatementResponseBodyDataGeneratedFields) *ExecuteStatementResponseBodyData {
-	s.GeneratedFields = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyData) SetNumberOfRecordsUpdated(v int64) *ExecuteStatementResponseBodyData {
-	s.NumberOfRecordsUpdated = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyData) SetRecords(v [][]*ExecuteStatementResponseBodyDataRecords) *ExecuteStatementResponseBodyData {
-	s.Records = v
-	return s
-}
-
-type ExecuteStatementResponseBodyDataColumnMetadata struct {
-	ArrayBaseColumnType *int32  `json:"ArrayBaseColumnType,omitempty" xml:"ArrayBaseColumnType,omitempty"`
-	IsAutoIncrement     *bool   `json:"IsAutoIncrement,omitempty" xml:"IsAutoIncrement,omitempty"`
-	IsCaseSensitive     *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
-	IsCurrency          *bool   `json:"IsCurrency,omitempty" xml:"IsCurrency,omitempty"`
-	IsSigned            *bool   `json:"IsSigned,omitempty" xml:"IsSigned,omitempty"`
-	Label               *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nullable            *int32  `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	Precision           *int32  `json:"Precision,omitempty" xml:"Precision,omitempty"`
-	Scale               *int32  `json:"Scale,omitempty" xml:"Scale,omitempty"`
-	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type                *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeName            *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-}
-
-func (s ExecuteStatementResponseBodyDataColumnMetadata) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementResponseBodyDataColumnMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetArrayBaseColumnType(v int32) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.ArrayBaseColumnType = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetIsAutoIncrement(v bool) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.IsAutoIncrement = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetIsCaseSensitive(v bool) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.IsCaseSensitive = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetIsCurrency(v bool) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.IsCurrency = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetIsSigned(v bool) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.IsSigned = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetLabel(v string) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Label = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetName(v string) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Name = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetNullable(v int32) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Nullable = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetPrecision(v int32) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Precision = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetScale(v int32) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Scale = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetSchemaName(v string) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetTableName(v string) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.TableName = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetType(v int32) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.Type = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetTypeName(v string) *ExecuteStatementResponseBodyDataColumnMetadata {
-	s.TypeName = &v
-	return s
-}
-
-type ExecuteStatementResponseBodyDataGeneratedFields struct {
-	ArrayValue   *string   `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty"`
-	BlobValue    io.Reader `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool     `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64  `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool     `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64    `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string   `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-}
-
-func (s ExecuteStatementResponseBodyDataGeneratedFields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementResponseBodyDataGeneratedFields) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetArrayValue(v string) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.ArrayValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetBlobValue(v io.Reader) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.BlobValue = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetBooleanValue(v bool) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.BooleanValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetDoubleValue(v float64) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.DoubleValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetIsNull(v bool) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.IsNull = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetLongValue(v int64) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.LongValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataGeneratedFields) SetStringValue(v string) *ExecuteStatementResponseBodyDataGeneratedFields {
-	s.StringValue = &v
-	return s
-}
-
-type ExecuteStatementResponseBodyDataRecords struct {
-	ArrayValue   *ExecuteStatementResponseBodyDataRecordsArrayValue `json:"ArrayValue,omitempty" xml:"ArrayValue,omitempty" type:"Struct"`
-	BlobValue    io.Reader                                          `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool                                              `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64                                           `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool                                              `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64                                             `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string                                            `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
-}
-
-func (s ExecuteStatementResponseBodyDataRecords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementResponseBodyDataRecords) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetArrayValue(v *ExecuteStatementResponseBodyDataRecordsArrayValue) *ExecuteStatementResponseBodyDataRecords {
-	s.ArrayValue = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetBlobValue(v io.Reader) *ExecuteStatementResponseBodyDataRecords {
-	s.BlobValue = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetBooleanValue(v bool) *ExecuteStatementResponseBodyDataRecords {
-	s.BooleanValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetDoubleValue(v float64) *ExecuteStatementResponseBodyDataRecords {
-	s.DoubleValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetIsNull(v bool) *ExecuteStatementResponseBodyDataRecords {
-	s.IsNull = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetLongValue(v int64) *ExecuteStatementResponseBodyDataRecords {
-	s.LongValue = &v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecords) SetStringValue(v string) *ExecuteStatementResponseBodyDataRecords {
-	s.StringValue = &v
-	return s
-}
-
-type ExecuteStatementResponseBodyDataRecordsArrayValue struct {
-	ArrayValues   []interface{} `json:"ArrayValues,omitempty" xml:"ArrayValues,omitempty" type:"Repeated"`
-	BooleanValues []*bool       `json:"BooleanValues,omitempty" xml:"BooleanValues,omitempty" type:"Repeated"`
-	DoubleValues  []*float64    `json:"DoubleValues,omitempty" xml:"DoubleValues,omitempty" type:"Repeated"`
-	LongValues    []*int64      `json:"LongValues,omitempty" xml:"LongValues,omitempty" type:"Repeated"`
-	StringValues  []*string     `json:"StringValues,omitempty" xml:"StringValues,omitempty" type:"Repeated"`
-}
-
-func (s ExecuteStatementResponseBodyDataRecordsArrayValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteStatementResponseBodyDataRecordsArrayValue) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteStatementResponseBodyDataRecordsArrayValue) SetArrayValues(v []interface{}) *ExecuteStatementResponseBodyDataRecordsArrayValue {
-	s.ArrayValues = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecordsArrayValue) SetBooleanValues(v []*bool) *ExecuteStatementResponseBodyDataRecordsArrayValue {
-	s.BooleanValues = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecordsArrayValue) SetDoubleValues(v []*float64) *ExecuteStatementResponseBodyDataRecordsArrayValue {
-	s.DoubleValues = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecordsArrayValue) SetLongValues(v []*int64) *ExecuteStatementResponseBodyDataRecordsArrayValue {
-	s.LongValues = v
-	return s
-}
-
-func (s *ExecuteStatementResponseBodyDataRecordsArrayValue) SetStringValues(v []*string) *ExecuteStatementResponseBodyDataRecordsArrayValue {
-	s.StringValues = v
 	return s
 }
 
@@ -1208,11 +942,11 @@ func (s *RollbackTransactionRequest) SetTransactionId(v string) *RollbackTransac
 }
 
 type RollbackTransactionResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RollbackTransactionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RollbackTransactionResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RollbackTransactionResponseBody) String() string {
@@ -1228,7 +962,7 @@ func (s *RollbackTransactionResponseBody) SetCode(v string) *RollbackTransaction
 	return s
 }
 
-func (s *RollbackTransactionResponseBody) SetData(v *RollbackTransactionResponseBodyData) *RollbackTransactionResponseBody {
+func (s *RollbackTransactionResponseBody) SetData(v *RollbackTransactionResult) *RollbackTransactionResponseBody {
 	s.Data = v
 	return s
 }
@@ -1245,23 +979,6 @@ func (s *RollbackTransactionResponseBody) SetRequestId(v string) *RollbackTransa
 
 func (s *RollbackTransactionResponseBody) SetSuccess(v bool) *RollbackTransactionResponseBody {
 	s.Success = &v
-	return s
-}
-
-type RollbackTransactionResponseBodyData struct {
-	TransactionStatus *string `json:"TransactionStatus,omitempty" xml:"TransactionStatus,omitempty"`
-}
-
-func (s RollbackTransactionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RollbackTransactionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RollbackTransactionResponseBodyData) SetTransactionStatus(v string) *RollbackTransactionResponseBodyData {
-	s.TransactionStatus = &v
 	return s
 }
 
