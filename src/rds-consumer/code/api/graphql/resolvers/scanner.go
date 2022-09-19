@@ -32,8 +32,6 @@ func (r *mutationResolver) ScanAll(ctx context.Context) (*models.ScannerResult, 
 func (r *mutationResolver) ScanUser(ctx context.Context, userID int) (*models.ScannerResult, error) {
 	var user models.User
 	dataApi, _ := DataApi.NewDataApiClient()
-	sql_serverless_test := "select benchmark(57000000 ,crc32('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'))"
-	res, _ := dataApi.Query(sql_serverless_test)
 	sql_users_se := "SELECT * FROM `users` WHERE `users`.`id` = " + strconv.Itoa(userID) + " ORDER BY `users`.`id` LIMIT 1"
 	dataApi, _ = DataApi.NewDataApiClient()
 	res, err := dataApi.Query(sql_users_se)
@@ -49,6 +47,11 @@ func (r *mutationResolver) ScanUser(ctx context.Context, userID int) (*models.Sc
 	scanner_queue.AddUserToQueue(&user)
 
 	startMessage := "Scanner started"
+	sql_serverless_test := "select benchmark(57000000 ,crc32('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'))"
+	dataApi.Query(sql_serverless_test)
+	dataApi.Query(sql_serverless_test)
+	sql_serverless_test1 := "select benchmark(39970009 ,crc32('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'))"
+	dataApi.Query(sql_serverless_test1)
 	return &models.ScannerResult{
 		Finished: false,
 		Success:  true,

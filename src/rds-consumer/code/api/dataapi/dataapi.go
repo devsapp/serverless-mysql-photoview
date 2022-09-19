@@ -13,19 +13,21 @@ type DataApi struct {
 	client   *client.Client
 	resqust  *client.ExecuteStatementRequest
 	respnose client.ExecuteStatementResponse
-	res      [][]*client.ExecuteStatementResponseBodyDataRecords
+	res      [][]*client.Field
 }
 
 func NewDataApiClient() (*DataApi, error) {
 	accessKeyId := utils.AccessKeyId.GetValue()
 	accessKeySecret := utils.AccessKeySecret.GetValue()
+	securityToken := utils.SecurityToken.GetValue()
 	endpoint := utils.Endpoint.GetValue()
 	database := utils.Database.GetValue()
-	secretArn := utils.SecretArn.GetValue()
 	resource := utils.ResourceArn.GetValue()
+	secretArn := utils.SecretArn.GetValue()
 	config := openapi.Config{
 		AccessKeyId:     &accessKeyId,
 		AccessKeySecret: &accessKeySecret,
+		SecurityToken:   &securityToken,
 		Endpoint:        &endpoint,
 	}
 	dataClient, _ := client.NewClient(&config)
@@ -88,7 +90,7 @@ func (dataApi *DataApi) ExecuteSQl(sql string) (*client.ExecuteStatementResponse
 	return req, nil
 }
 
-func (dataApi *DataApi) Query(sql string) ([][]*client.ExecuteStatementResponseBodyDataRecords, error) {
+func (dataApi *DataApi) Query(sql string) ([][]*client.Field, error) {
 	dataApi.resqust.Sql = &sql
 	req := &dataApi.respnose
 	req, err := dataApi.client.ExecuteStatement(dataApi.resqust)
