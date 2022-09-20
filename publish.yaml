@@ -16,7 +16,7 @@ Description: 基于函数计算快速部署相册应用，对图片进行扫描�
 HomePage: https://github.com/devsapp/serverless-mysql-photoview
 Tags: #标签详情
   - MySQL-Serverless
-Category: Web应用
+Category: 全栈应用 # 基础云服务/Web框架/Web应用/人工智能/音视频处理/图文处理/监控告警/大数据/IoT/新手入门/其他
 Service: # 使用的服务
   函数计算:
     Authorities:
