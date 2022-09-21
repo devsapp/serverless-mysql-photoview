@@ -9,6 +9,7 @@ vars: # 全局变量
     role: "{{ roleArn }}"
     description: "创建MySQL并使用"
     logConfig: auto
+    nasConfig: auto
 
 
 services:
