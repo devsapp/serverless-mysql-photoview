@@ -21,15 +21,15 @@ Service: # 使用的服务
   函数计算:
     Authorities:
       - AliyunFCFullAccess
-    硬盘挂载:
-      Authorities:
-        - AliyunNASFullAccess
-      VPC:
-        Authorities:
-          - AliyunVPCFullAccess
-      其它:
-        Authorities:
-          - AliyunECSFullAccess
+  硬盘挂载:
+    Authorities:
+      - AliyunNASFullAccess
+  VPC:
+    Authorities:
+      - AliyunVPCFullAccess
+  其它:
+    Authorities:
+      - AliyunECSFullAccess
 Parameters:
   type: object
   additionalProperties: false # 不允许增加其他属性
