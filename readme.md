@@ -122,7 +122,7 @@
 * 实例自动启停，客户中断数据库访问时，实例进入静默状态，节省资源
 * 秒级计费，系统根据实例秒级RCU资源量变化，精确计费
 
-如需了解更多，请参考RDS官方网站  [Serverless Devs Cli] (https://www.serverless-devs.com/serverless-devs/install)https://help.aliyun.com/document_detail/411628.html
+如需了解更多，请参考RDS官方网站 https://www.serverless-devs.com/serverless-devs/install)https://help.aliyun.com/document_detail/411628.html
 
 
 
