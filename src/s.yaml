@@ -3,13 +3,6 @@ name: hello-world-app
 access: "{{ access }}"
 vars: # 全局变量
   region: "cn-hangzhou"
-  service:
-    name: "photoview"
-    internetAccess: true
-    role: "{{ roleArn }}"
-    description: "创建MySQL并使用"
-    logConfig: auto
-    nasConfig: auto
 
 
 services:
@@ -17,7 +10,12 @@ services:
     component: fc
     props:
       region:  ${vars.region}
-      service: ${vars.service}
+      service:
+        name: "photoview"
+        internetAccess: true
+        role: "{{ roleArn }}"
+        description: "创建MySQL并使用"
+        logConfig: auto
       function:
         name:  ${vars.service.name}_creator
         description: "create mysql resource"
@@ -39,12 +37,15 @@ services:
             oss_object_name: "{{ ossObjectName }}"
             endpoint: rds-data.cn-hangzhou.aliyuncs.com
             databaseName: photoview
-
-
-
     props:
       region: ${vars.region}
-      service: ${vars.service}
+      service:
+        name: "photoview"
+        internetAccess: true
+        role: "{{ roleArn }}"
+        description: "创建MySQL并使用"
+        logConfig: auto
+        nasConfig: auto
       function:
         name: ${vars.service.name}_consumer
         description:
