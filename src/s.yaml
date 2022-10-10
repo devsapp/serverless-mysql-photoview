@@ -21,6 +21,7 @@ services:
         name:  ${vars.service.name}_creator
         description: "create mysql resource"
         runtime: custom-container
+        caPort: 9000
         customContainerConfig:
           image:  registry.cn-hangzhou.aliyuncs.com/serverless_devs/serverless-rds-creator-image:0.0.1
         memorySize: 1024

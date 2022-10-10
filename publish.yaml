@@ -11,7 +11,7 @@ Type: Application
 Name: photoview
 Provider:
   -  阿里云
-Version: 1.2.8
+Version: 1.2.9
 Description: 基于函数计算快速部署相册应用，对图片进行扫描、分类、添加喜爱，体验 MySQL Serverlesss 数据库极致弹性
 HomePage: https://github.com/devsapp/serverless-mysql-photoview
 Tags: #标签详情
