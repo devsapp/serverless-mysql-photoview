@@ -19,7 +19,6 @@ WORKDIR /
 COPY --from=builder /workspace/server .
 COPY --from=binary bin/.terraform.d /root/.terraform.d
 COPY --from=binary bin/terraform /usr/bin/terraform
-COPY --from=binary dev_bin/.terraformrc /root/.terraformrc
 
 COPY data/serverless-rds.tf /data/serverless-rds.tf
 
