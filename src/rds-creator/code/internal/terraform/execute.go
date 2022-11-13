@@ -4,10 +4,12 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
 	"path/filepath"
+
+	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 )
 
 type execStruct struct {
@@ -78,7 +80,7 @@ func terraformApplyAndDestroy(execChan chan execStruct, cmd *exec.Cmd, logger *l
 	// stream outputBuf
 	scanner := bufio.NewScanner(output)
 	for scanner.Scan() {
-		//wrapper := &OutputsWrapper{}
+		// wrapper := &OutputsWrapper{}
 		m := scanner.Text()
 		_, err = outputBuf.WriteString(m)
 		if err != nil {
@@ -92,9 +94,17 @@ func terraformApplyAndDestroy(execChan chan execStruct, cmd *exec.Cmd, logger *l
 	}
 
 	if err = cmd.Wait(); err != nil {
+		err1, errMsg := GetOutputWhenError(outputBuf.String())
+		if err1 != nil {
+			execChan <- execStruct{
+				str: "",
+				err: errors.Wrap(err1, "executing cmd wait error, get output error"),
+			}
+			return
+		}
 		execChan <- execStruct{
-			str: outputBuf.String(),
-			err: err,
+			str: errMsg,
+			err: errors.Wrap(err, "executing cmd wait error"),
 		}
 		return
 	}

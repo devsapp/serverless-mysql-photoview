@@ -206,7 +206,7 @@ func (t *Client) Do() (string, error) {
 
 // getOutput get outputs of terraform job.
 func (t *Client) getOutput(output string) (error, string, string) {
-	err, outputWrapperList := t.jsonListStrToOutputWrapperList(output)
+	err, outputWrapperList := JsonListStrToOutputWrapperList(output)
 	if err != nil {
 		return err, "", ""
 	}
@@ -317,34 +317,31 @@ type OutputWrapper struct {
 	Diagnostic json.RawMessage `json:"diagnostic"`
 }
 
-// When error, add apply_complete message and error message into output message.
+// GetOutputWhenError When error, add apply_complete message and error message into output message.
 // todo 之后用这个函数细化 error 的内容
-func (t *Client) getOutputWhenError(output string) (error, string) {
-	err, outputWrapperList := t.jsonListStrToOutputWrapperList(output)
+func GetOutputWhenError(output string) (error, string) {
+	err, outputWrapperList := JsonListStrToOutputWrapperList(output)
 	if err != nil {
 		return err, ""
+	}
+	if outputWrapperList == nil {
+		return errors.New("transfer output from json list to internal struct error"), ""
 	}
 	errMessages := make([]OutputWrapper, 0)
 	for _, outputWrapper := range *outputWrapperList {
 		if outputWrapper.Level == static.Error {
 			errMessages = append(errMessages, outputWrapper)
 		}
-		if outputWrapper.Type == static.ApplyError {
-			errMessages = append(errMessages, outputWrapper)
-		}
-		if outputWrapper.Type == static.ApplyComplete {
-			errMessages = append(errMessages, outputWrapper)
-		}
 	}
 
-	errorAndCompleted, err := json.Marshal(errMessages)
+	errorMsg, err := json.Marshal(errMessages)
 	if err != nil {
 		return err, ""
 	}
-	return nil, string(errorAndCompleted)
+	return nil, string(errorMsg)
 }
 
-func (t *Client) jsonListStrToOutputWrapperList(jsonListStr string) (error, *[]OutputWrapper) {
+func JsonListStrToOutputWrapperList(jsonListStr string) (error, *[]OutputWrapper) {
 	dec := json.NewDecoder(strings.NewReader(jsonListStr))
 
 	var outputList []OutputWrapper
@@ -356,7 +353,6 @@ func (t *Client) jsonListStrToOutputWrapperList(jsonListStr string) (error, *[]O
 			break
 		}
 		if err != nil {
-			t.logger.Error(err)
 			return err, nil
 		}
 		outputList = append(outputList, outputWrapper)
