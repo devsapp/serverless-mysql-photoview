@@ -1,5 +1,5 @@
 # 修改这里
-VERSION ?= 0.0.1
+VERSION ?= $(shell date "+%Y%m%d%H%M%S")
 # BUILD_TIME is used for daemon BuildTime in go build.
 BUILD_TIME=$(shell date --rfc-3339 s 2> /dev/null | sed -e 's/ /T/')
 
