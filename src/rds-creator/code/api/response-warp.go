@@ -1,20 +1,21 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 const (
-	StatusFail = "FAILED"
-	StatusOk   = "SUCCESS"
+	StatusFail           = "FAILED"
+	StatusOk             = "SUCCESS"
+	FcErrorStatusCode    = 417
+	FcErrorStatusCodeStr = "417"
 )
 
 func RespondError(c *gin.Context, errCode int, errMsg string) {
-	c.JSON(errCode, gin.H{
-		"status":  StatusFail,
-		"message": errMsg,
-	})
+	c.Header("x-fc-status", FcErrorStatusCodeStr)
+	c.JSON(FcErrorStatusCode, errMsg)
 }
 
 func respondInternalError(c *gin.Context, errMsg string) {

@@ -110,7 +110,8 @@ func (t *Client) apply() (error, string) {
 	if err != nil {
 		// new error found, write the error and raw outputs back.
 		t.logger.Error(errors.New(fmt.Sprintf("Error: %s, raw_output_all: %s", err, output)))
-		return errors.New(fmt.Sprintf("Error: %s, raw_output_all: %s", err, output)), ""
+		t.logger.Error(fmt.Sprintf("错误内容 %s", output))
+		return errors.New(output), ""
 	}
 	// get terraform output
 	err, starts, outputs := t.getOutput(output)
@@ -138,7 +139,7 @@ func (t *Client) destroy() (error, string) {
 	if err != nil {
 		// error found, write the error and raw outputs back.
 		t.logger.Error(errors.New(fmt.Sprintf("Error: %s, raw_output_all: %s", err, output)))
-		return errors.New(fmt.Sprintf("Error: %s, raw_output_all: %s", err, output)), ""
+		return errors.New(output), ""
 	}
 	err, starts, outputs := t.getOutput(output)
 	if err != nil {
@@ -327,18 +328,15 @@ func GetOutputWhenError(output string) (error, string) {
 	if outputWrapperList == nil {
 		return errors.New("transfer output from json list to internal struct error"), ""
 	}
-	errMessages := make([]OutputWrapper, 0)
+
+	var errMessages string
 	for _, outputWrapper := range *outputWrapperList {
-		if outputWrapper.Level == static.Error {
-			errMessages = append(errMessages, outputWrapper)
+		if !strings.Contains(errMessages, fmt.Sprintf("%v", outputWrapper.Message)) {
+			errMessages = errMessages + fmt.Sprintf("%v", outputWrapper.Message) + "\n"
 		}
 	}
 
-	errorMsg, err := json.Marshal(errMessages)
-	if err != nil {
-		return err, ""
-	}
-	return nil, string(errorMsg)
+	return nil, errMessages
 }
 
 func JsonListStrToOutputWrapperList(jsonListStr string) (error, *[]OutputWrapper) {
