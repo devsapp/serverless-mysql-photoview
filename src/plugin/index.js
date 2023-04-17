@@ -71,7 +71,8 @@ module.exports = async function index(inputs, args = {}) {
 
 
     const vpc = lodash.get(resourceConfig, 'VPC_ID.value')
-    const vSwitch = lodash.get(resourceConfig, 'VSWITCH_ID.value')
+    // const vSwitch = lodash.get(resourceConfig, 'VSWITCH_ID.value')
+    const fcVSwitch = lodash.get(resourceConfig, 'FC_VSWITCH_ID.value')
     const securityGroup = lodash.get(resourceConfig, 'SECURITY_GROUP_ID.value')
 
     const dbId = lodash.get(resourceConfig, 'DB_ID.value')
@@ -98,7 +99,7 @@ module.exports = async function index(inputs, args = {}) {
                 vpcConfig: {
                     vpcId: vpc,
                     securityGroupId: securityGroup,
-                    vswitchIds: [vSwitch]
+                    vswitchIds: [fcVSwitch]
                 }
             },
             function: {
