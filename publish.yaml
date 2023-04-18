@@ -56,6 +56,7 @@ Parameters:
           - AliyunLogFullAccess
           - AliyunVPCFullAccess
           - AliyunECSFullAccess
+          - AliyunFCFullAccess
     ossBucket:
       title: OSS存储桶名
       type: string
