@@ -2,6 +2,7 @@ const core = require('@serverless-devs/core');
 const {validate} = require('./validate');
 const {FunctionHelper} = require('./fcClient');
 const {RdsHelper} = require('./rdsClient');
+const util = require('util');
 
 const {lodash, Logger} = core;
 const logger = new Logger('fc-resource-creator');
@@ -50,11 +51,16 @@ module.exports = async function index(inputs, args = {}) {
             title: 'Invoke resource creator function',
             id: 'invoking function',
             task: async () => {
-                body = await fcClient.invoke(
-                    serviceName,
-                    functionName,
-                    payload
-                );
+                try {
+                    body = await fcClient.invoke(
+                        serviceName,
+                        functionName,
+                        payload
+                    );
+                } catch (e) {
+                    logger.log(util.inspect(e));
+                    throw new Error(e.message)
+                }
             },
         },
     ]);
