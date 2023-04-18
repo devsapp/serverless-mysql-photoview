@@ -58,13 +58,13 @@ module.exports = async function index(inputs, args = {}) {
                         payload
                     );
                 } catch (e) {
-                    logger.log(util.inspect(e));
+                    logger.info(util.inspect(e));
                     throw new Error(e.message)
                 }
             },
         },
     ]);
-
+    logger.info(`body: ${util.inspect(body)}`);
     const Output = JSON.parse(body.toString());
     if (lodash.get(Output, 'status') != 'SUCCESS') {
         logger.error(`Create resource error, operations: ${JSON.stringify(Output)}`);
