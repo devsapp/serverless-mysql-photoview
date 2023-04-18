@@ -7,7 +7,7 @@ class FunctionHelper {
       accessKeySecret: config.accessKeySecret,
       securityToken: config.securityToken,
       region: config.regionId,
-      timeout: 600 * 1000,
+      timeout: 6000 * 1000,
     });
   }
 
