@@ -65,7 +65,7 @@ module.exports = async function index(inputs, args = {}) {
         },
     ]);
     if(!isJson(body)) {
-        logger.error(body);
+        throw new Error(body);
     }
     const Output = JSON.parse(body.toString());
     if (lodash.get(Output, 'status') != 'SUCCESS') {
