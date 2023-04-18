@@ -64,7 +64,9 @@ module.exports = async function index(inputs, args = {}) {
             },
         },
     ]);
-    logger.info(`body: ${util.inspect(body)}`);
+    if(!isJson(body)) {
+        logger.error(body);
+    }
     const Output = JSON.parse(body.toString());
     if (lodash.get(Output, 'status') != 'SUCCESS') {
         logger.error(`Create resource error, operations: ${JSON.stringify(Output)}`);
@@ -122,3 +124,13 @@ module.exports = async function index(inputs, args = {}) {
 
     return inputs;
 };
+
+function isJson(strJson) {
+    try {
+        const parsed = JSON.parse(strJson)
+        if (parsed && typeof parsed === "object") {
+            return true
+        }
+    } catch { return false }
+    return false
+}
