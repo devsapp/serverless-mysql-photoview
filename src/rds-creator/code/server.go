@@ -45,7 +45,7 @@ func start() {
 // we must gracefully stop terraform job in case of not upload terraform backend state into oss.
 // gracefully stop terraform job:
 func timingStop(jobStop chan int, timerStop chan int, logger *logrus.Entry) {
-	to := time.NewTimer(9 * time.Minute)
+	to := time.NewTimer(18 * time.Minute)
 	logger.Info("Begin the timer")
 	defer to.Stop()
 	select {
