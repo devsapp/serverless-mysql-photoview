@@ -23,7 +23,7 @@ services:
         runtime: custom-container
         caPort: 9000
         customContainerConfig:
-          image:  registry.cn-hangzhou.aliyuncs.com/serverless_devs/serverless-rds-creator-image:20230417205234
+          image:  registry.cn-hangzhou.aliyuncs.com/serverless_devs/serverless-rds-creator-image:20230519142435
         memorySize: 1024
         timeout: 1800
   photoview:
